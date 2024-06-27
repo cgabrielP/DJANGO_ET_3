@@ -3,4 +3,4 @@ from .models import Product
 # Create your views here.
 def home(req):
     products = Product.objects.all()
-    return render(req, 'home.html', {'products': products})
+    return render(req, 'home/home.html', {'products': products})

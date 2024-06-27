@@ -9,6 +9,8 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/card.css' %}" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -28,7 +30,6 @@
               <li class="nav-item">
                 <a class="nav-link text-white" href="#">Centro de Ayuda</a>
               </li>
-
               <li class="nav-item">
                 <a class="nav-link text-white" href="#">Estado de tu pedido</a>
               </li>
@@ -71,7 +72,7 @@
           <img
             width="80"
             height="70"
-            src="img/logo/logo-pequeño.png"
+            src="{% static 'assets/logo-pequeño.png' %}"
             alt=""
             srcset=""
           />
@@ -188,8 +189,8 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="fa-solid fa-table-cells-large"></i>
-                Todas las categorías
+                <i class="fa-solid fa-table-cells-large"></i> Todas las
+                categorías
               </a>
               <ul class="dropdown-menu"></ul>
             </li>
@@ -201,8 +202,7 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i class="fa-solid fa-percent"></i>
-                Ofertas
+                <i class="fa-solid fa-percent"></i> Ofertas
               </a>
               <ul class="dropdown-menu">
                 <li>
@@ -212,14 +212,14 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item mb-1" href="#"
-                    ><i class="fa-solid fa-dog me-1 text-danger-emphasis"></i
+                  <a class="dropdown-item mb-1" href="#">
+                    <i class="fa-solid fa-dog me-1 text-danger-emphasis"></i
                     >Perro</a
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item" href="#"
-                    ><i class="fa-solid fa-cat me-1 text-danger-emphasis"></i
+                  <a class="dropdown-item" href="#">
+                    <i class="fa-solid fa-cat me-1 text-danger-emphasis"></i
                     >Gatos</a
                   >
                 </li>
@@ -231,7 +231,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Favoritos</a>
               </li>
-
               <li class="nav-item">
                 <a class="nav-link" href="#">Revista</a>
               </li>
@@ -241,113 +240,105 @@
       </div>
     </nav>
     <div class="container p-4">
-      <div className="row my-3 justify-content-start ">
-        {% block content %}
-        <!-- Aquí irá el contenido específico de cada página -->
-        {% endblock %}
-        </div>
+      {% block content %}
+      <!-- Aquí irá el contenido específico de cada página -->
+      {% endblock %}
     </div>
     <div
-        class="offcanvas offcanvas-end"
-        tabindex="-1"
-        id="carrito"
-        aria-labelledby="offcanvasRightLabel"
-      ></div>
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="carrito"
+      aria-labelledby="offcanvasRightLabel"
+    ></div>
     <footer class="pt-3 mt-5">
-        <ul class="nav justify-content-evenly border-top bg-light border-top">
-          <li class="nav_item">
-            <div class="nav p-3 fw-bold">Centro de Ayuda</div>
-            <ul class="flex-colum my-2">
-              <li class="nav py-2">
-                <a class="text-decoration-none text-muted" href="#"
-                  >Problemas</a
-                >
-              </li>
-              <li class="nav py-2">
-                <a class="text-decoration-none text-muted" href="#"
-                  >Informacion de pago</a
-                >
-              </li>
-              <li class="nav py-2">
-                <a class="text-decoration-none text-muted" href="#"
-                  >Como modificar mis datos</a
-                >
-              </li>
-              <li class="nav py-2">
-                <a class="text-decoration-none text-muted" href="#"
-                  >Modos de entrega</a
-                >
-              </li>
-              <li class="nav py-2">
-                <a class="text-decoration-none text-muted" href="#">Locales</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav_item">
-            <div class="nav p-3 fw-bold">Nosotros</div>
-            <ul class="flex-colum my-2">
-              <li class="nav py-2">
-                <a class="text-decoration-none text-muted" href="#"
-                  >Compromisos</a
-                >
-              </li>
-  
-              <li class="nav py-2">
-                <a class="text-decoration-none text-muted" href="#">Locales</a>
-              </li>
-              <li class="nav py-2">
-                <a class="text-decoration-none text-muted" href="#"
-                  >Productos</a
-                >
-              </li>
-              <li class="nav py-2">
-                <a class="text-decoration-none text-muted" href="#"
-                  >Proveedores</a
-                >
-              </li>
-            </ul>
-          </li>
-  
-          <li class="nav_item">
-            <ul class="flex-colum my-2"></ul>
-            <div class="nav pt-3 fw-bold">Siguenos</div>
-            <ul class="d-flex my-2">
-              <li class="nav-item list-unstyled py-2">
-                <a class="text-decoration-none text-muted" href="#"
-                  ><i class="fa-brands fa-facebook-f"></i
-                ></a>
-              </li>
-              <li class="nav-item list-unstyled py-2 ms-2">
-                <a class="text-decoration-none text-muted" href="#"
-                  ><i class="fa-brands fa-instagram"></i
-                ></a>
-              </li>
-              <li class="nav-item list-unstyled py-2 ms-2">
-                <a class="text-decoration-none text-muted" href="#"
-                  ><i class="fa-brands fa-tiktok"></i
-                ></a>
-              </li>
-            </ul>
-            <div class="nav pt-3 fw-bold">Medios de pago</div>
-            <ul class="d-flex my-2">
-              <li class="nav-item list-unstyled py-2">
-                <a class="text-decoration-none text-muted" href="#"
-                  ><i class="fa-brands fa-cc-visa"></i
-                ></a>
-              </li>
-              <li class="nav-item list-unstyled py-2 ms-2">
-                <a class="text-decoration-none text-muted" href="#"
-                  ><i class="fa-brands fa-cc-mastercard"></i
-                ></a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </footer>
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"
-      ></script>
+      <ul class="nav justify-content-evenly border-top bg-light border-top">
+        <li class="nav_item">
+          <div class="nav p-3 fw-bold">Centro de Ayuda</div>
+          <ul class="flex-colum my-2">
+            <li class="nav py-2">
+              <a class="text-decoration-none text-muted" href="#">Problemas</a>
+            </li>
+            <li class="nav py-2">
+              <a class="text-decoration-none text-muted" href="#"
+                >Informacion de pago</a
+              >
+            </li>
+            <li class="nav py-2">
+              <a class="text-decoration-none text-muted" href="#"
+                >Como modificar mis datos</a
+              >
+            </li>
+            <li class="nav py-2">
+              <a class="text-decoration-none text-muted" href="#"
+                >Modos de entrega</a
+              >
+            </li>
+            <li class="nav py-2">
+              <a class="text-decoration-none text-muted" href="#">Locales</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav_item">
+          <div class="nav p-3 fw-bold">Nosotros</div>
+          <ul class="flex-colum my-2">
+            <li class="nav py-2">
+              <a class="text-decoration-none text-muted" href="#"
+                >Compromisos</a
+              >
+            </li>
+            <li class="nav py-2">
+              <a class="text-decoration-none text-muted" href="#">Locales</a>
+            </li>
+            <li class="nav py-2">
+              <a class="text-decoration-none text-muted" href="#">Productos</a>
+            </li>
+            <li class="nav py-2">
+              <a class="text-decoration-none text-muted" href="#"
+                >Proveedores</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav_item">
+          <ul class="flex-colum my-2"></ul>
+          <div class="nav pt-3 fw-bold">Siguenos</div>
+          <ul class="d-flex my-2">
+            <li class="nav-item list-unstyled py-2">
+              <a class="text-decoration-none text-muted" href="#"
+                ><i class="fa-brands fa-facebook-f"></i
+              ></a>
+            </li>
+            <li class="nav-item list-unstyled py-2 ms-2">
+              <a class="text-decoration-none text-muted" href="#"
+                ><i class="fa-brands fa-instagram"></i
+              ></a>
+            </li>
+            <li class="nav-item list-unstyled py-2 ms-2">
+              <a class="text-decoration-none text-muted" href="#"
+                ><i class="fa-brands fa-tiktok"></i
+              ></a>
+            </li>
+          </ul>
+          <div class="nav pt-3 fw-bold">Medios de pago</div>
+          <ul class="d-flex my-2">
+            <li class="nav-item list-unstyled py-2">
+              <a class="text-decoration-none text-muted" href="#"
+                ><i class="fa-brands fa-cc-visa"></i
+              ></a>
+            </li>
+            <li class="nav-item list-unstyled py-2 ms-2">
+              <a class="text-decoration-none text-muted" href="#"
+                ><i class="fa-brands fa-cc-mastercard"></i
+              ></a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
