@@ -68,7 +68,7 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="{% url 'home' %}">
           <img
             width="80"
             height="70"
@@ -147,7 +147,7 @@
                 <button class="dropdown-item d-block" type="button">
                   <a
                     class="text-decoration-none text-dark"
-                    href="inicioSesion.html"
+                    href="{% url 'login' %}"
                     >Ingresar</a
                   >
                 </button>
@@ -157,7 +157,7 @@
                   class="dropdown-item d-block text-success"
                   type="button"
                 >
-                  <a class="text-success fw-bold" href="registro.html"
+                  <a class="text-success fw-bold" href="{% url 'register' %}"
                     >Registrarse</a
                   >
                 </button>
@@ -176,74 +176,10 @@
         </div>
       </div>
     </nav>
-    <!-- segundo navbar -->
-    <nav class="navbar navbar-expand-lg bg-success bg-opacity-10">
-      <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="navbarOfertas">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item dropdown bg-success rounded mx-2">
-              <a
-                class="nav-link dropdown-toggle text-white"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i class="fa-solid fa-table-cells-large"></i> Todas las
-                categorías
-              </a>
-              <ul class="dropdown-menu"></ul>
-            </li>
-            <li class="nav-item dropdown bg-warning bg-opacity-25 rounded">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i class="fa-solid fa-percent"></i> Ofertas
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a class="dropdown-item mb-1" href="ofertas.html">
-                    <i class="fa-solid fa-lightbulb me-1 text-warning"></i>Mas
-                    vendido</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item mb-1" href="#">
-                    <i class="fa-solid fa-dog me-1 text-danger-emphasis"></i
-                    >Perro</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" href="#">
-                    <i class="fa-solid fa-cat me-1 text-danger-emphasis"></i
-                    >Gatos</a
-                  >
-                </li>
-              </ul>
-            </li>
-          </ul>
-          <div class="d-flex">
-            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
-              <li class="nav-item">
-                <a class="nav-link" href="#">Favoritos</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Revista</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </nav>
-    <div class="container p-4">
+    
       {% block content %}
       <!-- Aquí irá el contenido específico de cada página -->
       {% endblock %}
-    </div>
     <div
       class="offcanvas offcanvas-end"
       tabindex="-1"
