@@ -10,3 +10,7 @@ def loginV(req):
 
 def registerV(req):
     return render(req,'register/index.html')
+
+def prodDetail(req,id):
+    product = Product.objects.get(id=id)
+    return render(req,'productDetail/index.html',{'product':product})
