@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} 
 {% block title %}Inicio{% endblock %} 
 {% block content %}
 <!-- segundo navbar -->
@@ -80,7 +80,11 @@
           <div class="fw-light">{{ product.brand }}</div>
           <p class="card-text text-truncate-multiline">{{ product.name }}</p>
           <div class="d-grid col-12">
-            <button class="btn btn-success text-center fw-bold">Agregar</button>
+            <button
+              class="btn btn-success text-center fw-bold"
+              onclick="addToCart('{{ product.id }}', '{{ product.name }}', '{{ product.price }}', '{{ product.image }}');">
+              Agregar
+            </button>
           </div>
         </div>
         <div class="justify-content-start">
