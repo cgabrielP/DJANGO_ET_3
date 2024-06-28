@@ -14,3 +14,6 @@ def registerV(req):
 def prodDetail(req,id):
     product = Product.objects.get(id=id)
     return render(req,'productDetail/index.html',{'product':product})
+
+def customerData(req):
+    return render(req,'customerData/index.html')
