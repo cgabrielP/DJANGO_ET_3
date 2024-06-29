@@ -19,7 +19,6 @@ const addToCart = (productId, productName, productPrice, productImage) => {
   }
 
   localStorage.setItem('cart', JSON.stringify(cart));
-  alert('Producto agregado al carrito');
   renderCart();
 };
 const cartLength=()=>{
@@ -28,7 +27,6 @@ const cartLength=()=>{
   amountOfProducts.innerHTML=cart.length;
 }
 
-// Función para renderizar el carrito en el DOM
 const renderCart = () => {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   console.log(cart);
@@ -78,27 +76,29 @@ const renderCart = () => {
   cartLength();
 };
 
-// Función para eliminar un producto del carrito
 const removeFromCart = (productId) => {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  cart = cart.filter(item => item.id !== productId);
-  console.log(cart[0]);
-  localStorage.setItem('cart', JSON.stringify(cart));
+  let index = cart.findIndex((item) => {
+    return parseInt(item.id) === productId;
+  });
+
+  if (index !== -1) {
+    cart.splice(index, 1);
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }
   renderCart();
 };
 
-// Función para aumentar la cantidad de un producto en el carrito
 const increaseQuantity = (productId) => {
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  let product = cart.find(item => item.id === productId);
-  if (product) {
-    product.quantity += 1;
-    localStorage.setItem('cart', JSON.stringify(cart));
-    renderCart();
-  }
+  let index = cart.findIndex((item) => parseInt(item.id) === productId);
+  cart[index].quantity++;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  renderCart();
+  
 };
 
-// Función para actualizar el resumen del carrito (subtotal, botón comprar, etc.)
 const updateCartSummary = (cart) => {
   const total = calculateTotal(cart);
   const subtotalElement = document.getElementById('subtotal');
