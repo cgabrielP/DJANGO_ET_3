@@ -12,6 +12,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/card.css' %}" />
     <script src="{% static 'js/manageCart.js' %}" defer></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -19,7 +20,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <title>{% block title %}Mi Sitio{% endblock %}</title>
+    <title>{% block title %}Flix House{% endblock %}</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg bg-dark fs-6 py-0">
@@ -196,19 +197,50 @@
             class="btn position-relative"
             type="button"
             data-bs-toggle="offcanvas"
-            data-bs-target="#cart"
-            aria-controls="offcanvasRight"
+            data-bs-target="#shoppingCart"
+            aria-controls="shoppingCart"
           >
             <i class="fa-solid fa-cart-shopping"></i>
           </button>
         </div>
       </div>
     </nav>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="shoppingCart" aria-labelledby="shoppingCart">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title fw-bold" id="cartLabel">
+      Tienes <span id="cart-length">0</span> producto(s)
+    </h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body d-flex flex-column">
+    <div id="cart-container">
+    </div>
+    <div class="offcanvas-footer mt-auto">
+      <div class="row pb-3">
+        <div class="col-9">Subtotal</div>
+        <div id="subtotal" class="col-3 fw-bold">$0</div>
+      </div>
+      <div class="row pb-3">
+        <div class="col-10 fs-6 fw-light">
+          Monto mínimo de compras <b>$10.000</b>
+        </div>
+      </div>
+      <div class="row pb-3 d-flex justify-content-end">
+        <div id="buy-button" class="col-5 btn btn-secondary text-white" disabled>
+          Comprar
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+    
     
       {% block content %}
       <!-- Aquí irá el contenido específico de cada página -->
       {% endblock %}
-
+      
    <footer class="pt-3 mt-5">
       <ul class="nav justify-content-evenly border-top bg-light border-top">
         <li class="nav_item">
@@ -299,5 +331,6 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+  
   </body>
 </html>
