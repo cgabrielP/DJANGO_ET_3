@@ -1,5 +1,5 @@
-{% extends 'base.html' %}
-{% block title %}Register{% endblock %}
+{% extends 'base.html' %} 
+{% block title %}Register{% endblock %} 
 {% block content %} 
 {% load static %}
 <section>
@@ -18,12 +18,10 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-2 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <label class="form-label" for="first_name"
-                        >Nombre</label
-                      >
+                      <label class="form-label" for="first_name">Nombre</label>
                       <input
                         type="text"
-                        name='first_name'
+                        name="first_name"
                         id="first_name"
                         class="form-control"
                         placeholder="Nombre Completo"
@@ -33,9 +31,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-2 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <label class="form-label" for="last_name"
-                        >Apellido</label
-                      >
+                      <label class="form-label" for="last_name">Apellido</label>
                       <input
                         type="text"
                         name="last_name"
@@ -54,11 +50,15 @@
                       <input
                         type="email"
                         id="email"
-                        name='email'
+                        name="email"
                         class="form-control"
                         placeholder="Correo Electrónico"
                       />
-                      <div id="error-message-email" style="display: none"></div>
+                      <div
+                        id="error-message-email"
+                        class="alert alert-danger text-center"
+                        style="display: none"
+                      ></div>
                     </div>
                   </div>
                   <div class="d-flex flex-row align-items-center mb-4">
@@ -74,7 +74,11 @@
                         class="form-control"
                         placeholder="Contraseña..."
                       />
-                      <div id="error-message-pass" style="display: none"></div>
+                      <div
+                        id="error-message-pass"
+                        class="alert alert-danger text-center"
+                        style="display: none"
+                      ></div>
                     </div>
                   </div>
                   <div class="d-flex flex-row align-items-center mb-4">
@@ -91,6 +95,7 @@
                       />
                       <div
                         id="error-message-pass-c"
+                        class="alert alert-danger text-center"
                         style="display: none"
                       ></div>
                     </div>
@@ -121,7 +126,9 @@
                   id="error-message"
                   class="text-center"
                   style="display: none"
-                >{{ error }}</div>
+                >
+                  {{ error }}
+                </div>
                 {% endif %}
               </div>
               <div
@@ -141,4 +148,5 @@
     </div>
   </div>
 </section>
+<script src="{% static 'js/validation.js' %}"></script>
 {% endblock %}
