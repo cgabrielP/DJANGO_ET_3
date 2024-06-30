@@ -60,6 +60,9 @@ def customerData(req):
     user = req.user
     return render(req,'customerData/index.html',{'user' : user})
 
+def pay(req):
+    return render(req, 'pay/index.html')
+
 @login_required
 def edit_user(req):
     if req.method == 'POST':
