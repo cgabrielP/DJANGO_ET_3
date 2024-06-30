@@ -183,8 +183,18 @@
                 class="dropdown-item d-block text-success"
                 type="button"
               >
-                <a class="text-success fw-bold" href="{% url 'logout' %}"
-                  >Cerra Sesion</a
+                <a  href="{% url 'customerData' %}" class='text-decoration-none'
+                  ><i class="fa-solid fa-user"></i> Mi perfil</a
+                >
+              </button>
+            </li>
+            <li>
+              <button
+                class="dropdown-item d-block text-danger"
+                type="button"
+              >
+                <a class="text-danger fw-bold text-decoration-none" href="{% url 'logout' %}"
+                  ><i class="fa-solid fa-power-off"></i> Cerra Sesion</a
                 >
               </button>
             </li>
@@ -238,7 +248,7 @@
     
     
       {% block content %}
-      
+
       {% endblock %}
       
    <footer class="pt-3 mt-5">
