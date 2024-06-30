@@ -3,6 +3,8 @@ from .models import Product
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+
 
 # Create your views here.
 def home(req):
@@ -57,3 +59,27 @@ def prodDetail(req,id):
 def customerData(req):
     user = req.user
     return render(req,'customerData/index.html',{'user' : user})
+
+@login_required
+def edit_user(req):
+    if req.method == 'POST':
+        method = req.POST.get('_method', '').upper()
+        if method == 'PUT':
+            user = req.user
+            user.username = req.POST.get('username')
+            user.first_name = req.POST.get('first_name')
+            user.last_name = req.POST.get('last_name')
+            user.email = req.POST.get('email')
+            user.save()
+            return redirect('customerData')  
+    return render(req, 'edit_user.html')
+
+@login_required
+def delete_user(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        messages.success(request, 'Tu cuenta ha sido eliminada con éxito.')
+        redirect('home')
+    return render(request, 'confirmDelete/index.html')
+    
