@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import Product
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def home(req):
@@ -52,5 +53,7 @@ def prodDetail(req,id):
     product = Product.objects.get(id=id)
     return render(req,'productDetail/index.html',{'product':product})
 
+@login_required
 def customerData(req):
-    return render(req,'customerData/index.html')
+    user = req.user
+    return render(req,'customerData/index.html',{'user' : user})
