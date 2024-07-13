@@ -1,5 +1,51 @@
 window.onload = function () {
   renderCart();
+  renderOrder();
+
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  const buyButton = document.getElementById('buy-button');
+
+  buyButton.addEventListener('click', (event) => {
+      if (buyButton.hasAttribute('disabled')) {
+          event.preventDefault(); 
+      } else {
+          window.location.href = buyButton.getAttribute('href');
+      }
+  });
+
+});
+
+const renderOrder = () => {
+  let products = JSON.parse(localStorage.getItem('cart')) || [];
+  const productsContainer = document.getElementById('orderProducts');
+  productsContainer.innerHTML = '';
+
+  products.forEach(item => {
+    const orderItem = document.createElement('div');
+    orderItem.className = 'order-item row my-3';
+
+    orderItem.innerHTML = `
+      <div class="col-md-3">
+        <img src="${item.image}" class="img-fluid rounded-start" alt="${item.name}" />
+      </div>
+      <div class="col-md-9 ">
+        <div class="card-title fs-6">${item.name}</div>
+        <div class="px-1">${item.quantity} un.</div>
+        <div class="fw-bold">$${item.price}</div>
+        <div role="button" class="fw-bold mt-2 mt-md-2 text-success text-decoration-underline" onclick="removeFromCart(${item.id})">
+          Eliminar
+        </div>
+      </div>
+    `
+
+    productsContainer.appendChild(orderItem);
+  });
+  updateCartSummary(products);
+  cartLength();
+  totalOrder(products)
+
 };
 
 const addToCart = (productId, productName, productPrice, productImage) => {
@@ -88,6 +134,7 @@ const removeFromCart = (productId) => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }
   renderCart();
+  renderOrder();
 };
 
 const increaseQuantity = (productId) => {
@@ -124,3 +171,10 @@ const updateCartSummary = (cart) => {
 const calculateTotal = (cart) => {
   return cart.reduce((total, item) => total + item.price * item.quantity, 0);
 };
+
+const totalOrder=(cart)=>{
+  let total = calculateTotal(cart);
+  const totalElement = document.getElementById('totalSale');
+  totalElement.textContent=`$${total}`;
+
+}

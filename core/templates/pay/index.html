@@ -1,59 +1,78 @@
 {% extends 'base.html' %} {% block title %}Pago - The Flix House{% endblock %}
 {% block content %} {% load static %}
-<div class="container h-100 my-4">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-12 col-xl-11">
-            <div class="card text-black" style="border-radius: 25px">
-                <div class="card-body p-md-5">
-                    <div class="row">
-                        <div class="col-md-10 col-lg-6 col-xl-5">
-                            <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                                Metodo de pago
-                            </p>
-                            <div class="d-flex justify-content-center mb-3">
-                                <img src="https://via.placeholder.com/150" class="img-fluid" alt="RP Image">
-                            </div>
-                            <h5 class="d-flex justify-content-center">ejemplo producto</h5>
-                        </div>
-                        <form class="col-md-6">
-                            <div class="mb-3">
-                                <label for="firstName" class="form-label">Primer Nombre</label>
-                                <input type="text" class="form-control bg-light-subtle text-black border-0"
-                                    id="firstName" placeholder="Ingresar Primer Nombre" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="lastName" class="form-label">Apellido</label>
-                                <input type="text" class="form-control bg-light-subtle text-black border-0"
-                                    id="lastName" placeholder="Ingresar Apellido" />
-                            </div>
-                            <div class="mb-3">
-                                <label for="cardNumber" class="form-label">Numero de la Tarjeta</label>
-                                <input type="text" class="form-control bg-light-subtle text-black border-0 mb-2"
-                                    id="cardNumber" placeholder="Ingresar Numero de la Tarjeta" />
-                                <div class="d-flex justify-content-between">
-                                    <input type="text" class="form-control bg-light-subtle text-black border-0 me-2"
-                                        placeholder="MM/YY" />
-                                    <input type="text" class="form-control bg-light-subtle text-black border-0"
-                                        placeholder="CVV" />
-                                </div>
-                            </div>
-                            <div class="form-check mb-4">
-                                <input class="form-check-input border-0" type="checkbox"
-                                    id="saveData" />
-                                <label class="form-check-label" for="saveData">
-                                    Save Data
-                                </label>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <button type="button" class="btn btn-secondary">Volver</button>
-                                <button type="submit" class="btn btn-success">PAGAR</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
+<div class="container h-100 my-4">
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-lg-12 col-xl-11">
+      <div class="card text-black" style="border-radius: 25px">
+        <div class="card-body p-md-5">
+          <div class="row">
+            <div class="col-md-10 col-lg-6 col-xl-5">
+              <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                Tu pedido
+              </p>
+
+              <div id="orderProducts" class="">
+                
+              </div>
+              
+              <div class="col-9">Subtotal</div>
+              <div id="totalSale" class="col-3 fw-bold">$0</div>
+            </div>
+            <form class="col-md-6">
+              <div class="mb-3">
+                <label for="Address" class="form-label">Direccion</label>
+                <input
+                  type="text"
+                  class="form-control bg-light-subtle text-black border-0"
+                  id="Address"
+                  placeholder="Ingrese su calle"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="nroAddress" class="form-label"
+                  >Numero direccion</label
+                >
+                <input
+                  type="text"
+                  class="form-control bg-light-subtle text-black border-0"
+                  id="nroAddress"
+                  placeholder="Ingrese su numero de casa/depto"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="cardNumber" class="form-label"
+                  >Numero de la Tarjeta</label
+                >
+                <input
+                  type="text"
+                  class="form-control bg-light-subtle text-black border-0 mb-2"
+                  id="cardNumber"
+                  placeholder="Ingresar Numero de la Tarjeta"
+                />
+                <div class="d-flex justify-content-between">
+                  <input
+                    type="text"
+                    class="form-control bg-light-subtle text-black border-0 me-2"
+                    placeholder="MM/YY"
+                  />
+                  <input
+                    type="text"
+                    class="form-control bg-light-subtle text-black border-0"
+                    placeholder="CVV"
+                  />
+                </div>
+              </div>
+              
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary">Volver</button>
+                <button type="submit" class="btn btn-success">PAGAR</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock content %}
