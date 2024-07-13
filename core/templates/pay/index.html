@@ -20,6 +20,7 @@
               <div id="totalSale" class="col-3 fw-bold">$0</div>
             </div>
             <form class="col-md-6">
+                {% csrf_token %}
               <div class="mb-3">
                 <label for="Address" class="form-label">Direccion</label>
                 <input
@@ -66,7 +67,7 @@
               
               <div class="d-flex justify-content-between">
                 <button type="button" class="btn btn-secondary">Volver</button>
-                <button type="submit" class="btn btn-success">PAGAR</button>
+                <button type="submit" id='makeOrder' class="btn btn-success">PAGAR</button>
               </div>
             </form>
           </div>

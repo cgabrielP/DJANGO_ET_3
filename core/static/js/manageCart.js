@@ -1,8 +1,3 @@
-window.onload = function () {
-  renderCart();
-  renderOrder();
-
-};
 
 document.addEventListener('DOMContentLoaded', () => {
   const buyButton = document.getElementById('buy-button');
@@ -74,6 +69,7 @@ const cartLength=()=>{
 }
 
 const renderCart = () => {
+  console.log('ifdhguigrhu');
   let cart = JSON.parse(localStorage.getItem('cart')) || [];
   console.log(cart);
   const cartContainer = document.getElementById('cart-container');
@@ -178,3 +174,7 @@ const totalOrder=(cart)=>{
   totalElement.textContent=`$${total}`;
 
 }
+window.onload = function () {
+  renderCart();
+  renderOrder();
+};

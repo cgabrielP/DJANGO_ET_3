@@ -1,5 +1,8 @@
+import json
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render,redirect
-from .models import Product
+from .models import Product,Order,OrderDetail
+from django.http import JsonResponse
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -86,3 +89,38 @@ def delete_user(request):
         redirect('home')
     return render(request, 'confirmDelete/index.html')
     
+
+@csrf_exempt
+@login_required
+def create_order(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            products = data.get('products', [])
+            
+            # Crear la orden
+            order = Order.objects.create(user=request.user, status='Pending', total_amount=0.00)
+
+            total_amount = 0
+            for item in products:
+                product = Product.objects.get(id=item['id'])
+                quantity = item['quantity']
+                price = product.price
+
+                OrderDetail.objects.create(
+                    order=order,
+                    product=product,
+                    quantity=quantity,
+                    price=price
+                )
+
+                total_amount += quantity * price
+
+            order.total_amount = total_amount
+            order.save()
+            redirect('home')
+            return JsonResponse({'success': True})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+
+    return JsonResponse({'success': False, 'error': 'Invalid request method'})
