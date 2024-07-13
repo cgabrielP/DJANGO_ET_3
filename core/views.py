@@ -123,3 +123,20 @@ def create_order(request):
             return JsonResponse({'success': False, 'error': str(e)})
 
     return JsonResponse({'success': False, 'error': 'Invalid request method'})
+
+@login_required
+def order_history(request):
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    order_details = []
+    
+    for order in orders:
+        details = OrderDetail.objects.filter(order=order)
+        order_details.append({
+            'order': order,
+            'details': details
+        })
+    
+    context = {
+        'order_details': order_details
+    }
+    return render(request, 'orders/index.html', context)

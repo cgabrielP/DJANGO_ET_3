@@ -183,8 +183,18 @@
                 class="dropdown-item d-block text-success"
                 type="button"
               >
-                <a  href="{% url 'customerData' %}" class='text-decoration-none'
+                <a  href="{% url 'customerData' %}" class='text-decoration-none text-dark'
                   ><i class="fa-solid fa-user"></i> Mi perfil</a
+                >
+              </button>
+            </li>
+            <li>
+              <button
+                class="dropdown-item d-block text-success"
+                type="button"
+              >
+                <a  href="{% url 'order_history' %}" class='text-decoration-none text-dark'
+                  > <i class="fa-solid fa-scroll"></i> Mis pedidos</a
                 >
               </button>
             </li>
