@@ -86,7 +86,7 @@ def delete_user(request):
         user = request.user
         user.delete()
         messages.success(request, 'Tu cuenta ha sido eliminada con éxito.')
-        redirect('home')
+        
     return render(request, 'confirmDelete/index.html')
     
 
@@ -118,7 +118,6 @@ def create_order(request):
 
             order.total_amount = total_amount
             order.save()
-            redirect('home')
             return JsonResponse({'success': True})
         except Exception as e:
             return JsonResponse({'success': False, 'error': str(e)})
